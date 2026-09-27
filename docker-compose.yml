@@ -1,0 +1,49 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: house_crepe_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+      POSTGRES_DB: house_crepe
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d house_crepe"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: house_crepe_web
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URI=postgresql://postgres:postgrespassword@db:5432/house_crepe
+      - PAYLOAD_SECRET=house-crepe-secret-token-super-secure-key-9988
+      - NEXT_PUBLIC_SERVER_URL=http://localhost:3000
+      - NEXT_PUBLIC_WHATSAPP_NUMBER=212600000000
+      - WATCHPACK_POLLING=true
+      - NODE_ENV=development
+      - PORT=3000
+    volumes:
+      - .:/app
+      - web_node_modules:/app/node_modules
+      - /app/.next
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
+    name: house_crepe_postgres_data
+  web_node_modules:
+    name: house_crepe_web_node_modules
