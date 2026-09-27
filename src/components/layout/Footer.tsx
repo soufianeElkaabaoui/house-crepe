@@ -1,7 +1,6 @@
-'use client';
-
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Sparkles, MapPin, Clock, Phone, MessageCircle, Banknote, ShieldCheck, Heart } from 'lucide-react';
 import { SITE_SETTINGS } from '@/data/mockData';
 
@@ -16,11 +15,20 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand & Manifesto */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-crepe-gold flex items-center justify-center text-chocolate-glaze">
-                <Sparkles className="w-5 h-5" />
+            <div className="flex items-center gap-3">
+              <div className="w-12 h-12 rounded-2xl overflow-hidden bg-white shadow-sm border border-house-brown/15 p-1 flex items-center justify-center">
+                <Image
+                  src="/images/logo.png"
+                  alt="HOUSE CREPE Logo"
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                />
               </div>
-              <span className="font-display font-bold text-2xl tracking-tight">HOUSE CREPE</span>
+              <div className="flex flex-col">
+                <span className="font-display font-bold text-2xl tracking-tight leading-none">HOUSE CREPE</span>
+                <span className="text-[10px] font-semibold tracking-wider text-crepe-gold uppercase mt-1">Gourmet Disruptor</span>
+              </div>
             </div>
             <p className="text-sm text-house-brown/80 dark:text-cream-whip/80 leading-relaxed">
               {SITE_SETTINGS.brandTagline} Handcrafted French crêpes, rested batter, artisanal Belgian chocolates, and savory galettes.
