@@ -20,7 +20,7 @@ export default function MenuPage() {
     CATEGORIES.find((c) => c.slug === selectedCategory) || CATEGORIES[0];
 
   return (
-    <div className="py-8 md:py-14 px-4 md:px-8 max-w-7xl mx-auto">
+    <div className="pt-24 md:pt-32 pb-14 px-4 md:px-8 max-w-7xl mx-auto">
       {/* Header */}
       <div className="max-w-3xl mb-8">
         <div className="inline-flex items-center gap-2 bg-crepe-gold/20 text-house-brown dark:text-crepe-gold px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">

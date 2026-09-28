@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ThemeProvider } from '@/components/layout/ThemeProvider';
 import { FloatingCartDrawer } from '@/components/cart/FloatingCartDrawer';
+import { SmoothScroll } from '@/components/layout/SmoothScroll';
 
 const fredoka = Fredoka({
   subsets: ['latin'],
@@ -48,17 +49,19 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${fredoka.variable} ${outfit.variable} scroll-smooth`}>
-      <body className="antialiased min-h-screen flex flex-col font-body selection:bg-crepe-gold selection:text-chocolate-glaze">
+    <html lang="en" suppressHydrationWarning className={`${fredoka.variable} ${outfit.variable}`}>
+      <body suppressHydrationWarning className="antialiased min-h-screen flex flex-col font-body selection:bg-crepe-gold selection:text-chocolate-glaze">
         <ThemeProvider>
-          <div className="flex-1 flex flex-col relative crepe-pattern">
-            <Header />
-            <main className="flex-1 pt-24 md:pt-28">
-              {children}
-            </main>
-            <Footer />
-            <FloatingCartDrawer />
-          </div>
+          <SmoothScroll>
+            <div className="flex-1 flex flex-col relative crepe-pattern">
+              <Header />
+              <main className="flex-1">
+                {children}
+              </main>
+              <Footer />
+              <FloatingCartDrawer />
+            </div>
+          </SmoothScroll>
         </ThemeProvider>
       </body>
     </html>

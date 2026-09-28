@@ -2,8 +2,8 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Install native dependencies and build essentials needed for alpine
-RUN apk add --no-cache libc6-compat python3 make g++ postgresql-client
+# Install native dependencies and build essentials needed for alpine, plus git and GitHub CLI
+RUN apk add --no-cache libc6-compat python3 make g++ postgresql-client git github-cli
 
 # Set environment variables for development and hot reloading
 ENV NODE_ENV=development
