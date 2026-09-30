@@ -1,3 +1,5 @@
+import { BRAND_COLORS } from '../../tailwind.config';
+
 export interface MenuItem {
   id: string;
   name: string;
@@ -87,7 +89,7 @@ export const MENU_ITEMS: MenuItem[] = [
     price: 15.0,
     category: 'savory',
     categoryTitle: 'Savory Galettes',
-    image: '/images/truffle-melt.jpg',
+    image: '/images/smoked-salmon.jpg',
     badge: "Chef's Choice",
     isAvailable: true,
     dietaryNotes: 'Gluten-Free Buckwheat Base • Contains Fish & Dairy',
@@ -137,6 +139,85 @@ export const MENU_ITEMS: MenuItem[] = [
 export const BESTSELLERS = MENU_ITEMS.filter(
   (item) => item.badge === "Chef's Choice" || item.badge === 'Popular'
 ).slice(0, 4);
+
+export interface ShowcaseDish {
+  id: number;
+  item: MenuItem;
+  name: string;
+  price: number;
+  desc: string;
+  img: string;
+  accent: string;
+  accentTextColor: string;
+  eyebrow: string;
+}
+
+export const SHOWCASE_MAIN_POS = { left: 56, top: 50, scale: 3.05 };
+
+export const SHOWCASE_PERIM_POS = [
+  { left: 62, top: 8 },   // top
+  { left: 93, top: 27 },  // upper-right
+  { left: 93, top: 73 },  // lower-right
+  { left: 62, top: 92 },  // bottom
+];
+
+export const SHOWCASE_DISHES: ShowcaseDish[] = [
+  {
+    id: 0,
+    item: MENU_ITEMS[0],
+    name: 'Nutella Dream & Hazelnut',
+    price: 11.5,
+    desc: '24-hour slow-fermented buttery crêpe fold, warm Italian hazelnut cocoa cream, hand-sliced alpine strawberries, toasted Piedmont hazelnut crumble, and a light powdered sugar veil.',
+    img: '/images/nutella-dream.jpg',
+    accent: BRAND_COLORS['crepe-gold'].DEFAULT,
+    accentTextColor: BRAND_COLORS['chocolate-glaze'].surface,
+    eyebrow: 'Warm Italian Gianduja',
+  },
+  {
+    id: 1,
+    item: MENU_ITEMS[1],
+    name: 'Truffle Melt & Chanterelle',
+    price: 14.5,
+    desc: 'Crispy Brittany dark buckwheat galette folded with bubbling aged Swiss Gruyère, pan-seared wild forest chanterelles, shaved black winter truffle, and organic garden thyme.',
+    img: '/images/truffle-melt.jpg',
+    accent: BRAND_COLORS['truffle-gold'].DEFAULT,
+    accentTextColor: BRAND_COLORS['chocolate-glaze'].surface,
+    eyebrow: 'Brittany Buckwheat Galette',
+  },
+  {
+    id: 2,
+    item: MENU_ITEMS[2],
+    name: 'Sicilian Pistachio & Crema',
+    price: 13.0,
+    desc: 'Stone-ground Sicilian emerald pistachio velvet cream, ribbons of melted Belgian white chocolate, hand-picked tart raspberries, and roasted Bronte pistachio crunch on cast iron lace.',
+    img: '/images/pistachio-raspberry.jpg',
+    accent: BRAND_COLORS['mint-leaf'].DEFAULT,
+    accentTextColor: BRAND_COLORS['chocolate-glaze'].surface,
+    eyebrow: 'D.O.P. Bronte Emerald Velvet',
+  },
+  {
+    id: 3,
+    item: MENU_ITEMS[3],
+    name: 'Caramel Biscoff & Banana',
+    price: 12.0,
+    desc: 'Fluffy golden crêpe layered with warm Belgian speculoos cookie butter, pan-caramelized banana coins, a swirl of salted Fleur de Sel caramel, and whipped Madagascar chantilly.',
+    img: '/images/biscoff-banana.jpg',
+    accent: BRAND_COLORS['crepe-gold'].dark,
+    accentTextColor: BRAND_COLORS['chocolate-glaze'].surface,
+    eyebrow: 'Belgian Speculoos Creation',
+  },
+  {
+    id: 4,
+    item: MENU_ITEMS[4],
+    name: 'Smoked Salmon & Crème',
+    price: 15.0,
+    desc: 'Crisp dark buckwheat galette folded with Norwegian oak-smoked salmon ribbons, whipped Meyer lemon crème fraîche, caper berries, and fresh garden micro dill.',
+    img: '/images/smoked-salmon.jpg',
+    accent: BRAND_COLORS['strawberry-red'].DEFAULT,
+    accentTextColor: '#FFFFFF',
+    eyebrow: 'Norwegian Oak Smoked Salmon',
+  },
+];
 
 export const SITE_SETTINGS = {
   brandName: 'HOUSE CREPE',
