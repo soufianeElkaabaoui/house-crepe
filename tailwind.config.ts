@@ -1,5 +1,46 @@
 import type { Config } from 'tailwindcss';
 
+export const BRAND_COLORS = {
+  'house-brown': {
+    DEFAULT: '#684226',
+    light: '#835432',
+    dark: '#4e311a',
+  },
+  'crepe-gold': {
+    DEFAULT: '#F9A825',
+    light: '#fbc02d',
+    dark: '#f57f17',
+  },
+  'strawberry-red': {
+    DEFAULT: '#E53935',
+    light: '#ef5350',
+    dark: '#c62828',
+  },
+  'cream-whip': {
+    DEFAULT: '#FFF8E1',
+    50: '#fffdf5',
+    100: '#FFF8E1',
+    200: '#ffecb3',
+    300: '#ffe082',
+  },
+  'chocolate-glaze': {
+    DEFAULT: '#3E2723',
+    surface: '#2b1b18',
+    card: '#4a2f2b',
+    border: '#5d3b36',
+  },
+  'mint-leaf': {
+    DEFAULT: '#81C784',
+    light: '#a5d6a7',
+    dark: '#4caf50',
+  },
+  'truffle-gold': {
+    DEFAULT: '#D4AF37',
+    light: '#dfc266',
+    dark: '#b39228',
+  },
+} as const;
+
 const config: Config = {
   darkMode: 'class',
   content: [
@@ -9,41 +50,7 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        'house-brown': {
-          DEFAULT: '#684226',
-          light: '#835432',
-          dark: '#4e311a',
-        },
-        'crepe-gold': {
-          DEFAULT: '#F9A825',
-          light: '#fbc02d',
-          dark: '#f57f17',
-        },
-        'strawberry-red': {
-          DEFAULT: '#E53935',
-          light: '#ef5350',
-          dark: '#c62828',
-        },
-        'cream-whip': {
-          DEFAULT: '#FFF8E1',
-          50: '#fffdf5',
-          100: '#FFF8E1',
-          200: '#ffecb3',
-          300: '#ffe082',
-        },
-        'chocolate-glaze': {
-          DEFAULT: '#3E2723',
-          surface: '#2b1b18',
-          card: '#4a2f2b',
-          border: '#5d3b36',
-        },
-        'mint-leaf': {
-          DEFAULT: '#81C784',
-          light: '#a5d6a7',
-          dark: '#4caf50',
-        },
-      },
+      colors: BRAND_COLORS,
       fontFamily: {
         display: ['var(--font-fredoka)', 'sans-serif'],
         body: ['var(--font-outfit)', 'sans-serif'],
